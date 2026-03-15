@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Phishing Threat Map</title>
+
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
+
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+}
+
+h1{
+margin-top:20px;
+}
+
+#map{
+height:500px;
+width:90%;
+margin:auto;
+margin-top:30px;
+border-radius:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🌍 Real Time Phishing Threat Map</h1>
+
+<div id="map"></div>
+
+<script>
+
+var map = L.map('map').setView([20.5937,78.9629],3);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+maxZoom:18
+}).addTo(map);
+
+
+var attacks = [
+
+{location:[19.0760,72.8777],country:"India"},
+{location:[37.0902,-95.7129],country:"USA"},
+{location:[51.5072,-0.1276],country:"UK"},
+{location:[35.6895,139.6917],country:"Japan"},
+{location:[48.8566,2.3522],country:"France"}
+
+];
+
+attacks.forEach(function(data){
+
+L.marker(data.location)
+.addTo(map)
+.bindPopup("⚠ Phishing Activity Detected in "+data.country);
+
+});
+
+</script>
+
+</body>
+</html>

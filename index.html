@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PhishGuard - Phishing URL Detection</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    z-index: 10;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: #22c55e;
+}
+
+/* ---------- Hero Image Full Screen ---------- */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ---------- Overlay for Forms ---------- */
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    background: rgba(0,0,0,0.45);
+    padding: 40px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.form-box {
+    margin-top: 20px;
+}
+
+.form-box input {
+    width: 70%;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    margin-right: 5px;
+}
+
+.form-box button {
+    padding: 12px 20px;
+    border-radius: 6px;
+    border: none;
+    background: #22c55e;
+    color: white;
+    cursor: pointer;
+}
+
+.form-box button:hover {
+    background: #16a34a;
+}
+
+/* ---------- Features Section ---------- */
+.features {
+    margin-top: 60px;
+    text-align: center;
+    color: white;
+}
+
+.feature-box {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.card {
+    background:#020617;
+    padding: 20px;
+    border-radius: 10px;
+    width: 220px;
+}
+
+/* ---------- Threat Map ---------- */
+.map {
+    margin-top: 50px;
+    text-align: center;
+}
+
+iframe {
+    border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ---------- Navbar ---------- -->
+<div class="navbar">
+    <a href="/">Home</a>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+   <a href="/dashboard">Dashboard</a>
+   <a href="/history">History</a>
+    <a href="/phishing-map">Threat Map</a>
+    <a href="/about">About</a>
+    <a href="/report">Report</a>
+</div>
+
+<!-- ---------- Hero Section ---------- -->
+<div class="hero">
+    <img src="{{ url_for('static', filename='images/cyber.png') }}" class="hero-img">
+
+    <div class="overlay">
+        <h1>PhishGuard AI</h1>
+
+        <!-- Scan Form -->
+        <form action="/scan" method="POST" class="form-box">
+            <input type="text" name="url" placeholder="Enter URL to scan" required>
+            <button type="submit">Scan URL</button>
+        </form>
+
+        <!-- AI Prediction Form -->
+        <form action="/predict" method="POST" class="form-box">
+            <input type="text" name="url" placeholder="Enter URL for AI Prediction" required>
+            <button type="submit">AI Prediction</button>
+        </form>
+    </div>
+</div>
+
+<!-- ---------- Features Section ---------- -->
+<div class="features">
+    <h2>System Features</h2>
+
+    <div class="feature-box">
+        <div class="card">
+            🔍 <h3>URL Scan</h3>
+            Detect phishing links instantly.
+        </div>
+
+        <div class="card">
+            🤖 <h3>AI Prediction</h3>
+            Machine learning phishing detection.
+        </div>
+
+        <div class="card">
+            📜 <h3>Scan History</h3>
+            View previously scanned URLs.
+        </div>
+
+        <div class="card">
+            🌍 <h3>Global Threat Map</h3>
+            Shows phishing attack locations.
+        </div>
+    </div>
+</div>
+
+<!-- ---------- Threat Map ---------- -->
+<div class="map">
+    <h3>Live Cyber Threat Map</h3>
+
+<a href="https://cybermap.kaspersky.com" target="_blank">
+<button style="padding:10px 20px;font-size:16px;">
+Open Live Cyber Threat Map
+</button>
+</a>

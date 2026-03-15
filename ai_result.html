@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>AI Phishing Prediction</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+
+body{
+    font-family: Arial;
+    background:#0f172a;
+    color:white;
+    text-align:center;
+}
+
+.container{
+    margin-top:80px;
+}
+
+.result{
+    font-size:28px;
+    margin-top:20px;
+}
+
+.score{
+    font-size:20px;
+    margin-top:10px;
+}
+
+a{
+    display:inline-block;
+    margin-top:30px;
+    padding:10px 20px;
+    background:#22c55e;
+    color:white;
+    text-decoration:none;
+    border-radius:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- IMAGE -->
+<img src="{{ url_for('static', filename='cyber.jpg') }}" width="250">
+
+<h1>AI Phishing Prediction Result</h1>
+
+<p><b>URL:</b> {{url}}</p>
+
+<div class="score">
+Risk Score : {{risk}}
+</div>
+
+<div class="result">
+{{result}}
+</div>
+
+<a href="/">Scan Another URL</a>
+
+</div>
+
+</body>
+</html>

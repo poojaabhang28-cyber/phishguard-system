@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Scan Result</h1>
+
+<p><b>URL:</b> {{ url }}</p>
+<p><b>Result:</b> {{ result }}</p>
+<p><b>Risk Score:</b> {{ risk }}</p>
+<p><b>Domain Age:</b> {{ domain_age }}</p>
+
+<hr>
+
+<!-- URL DNA Features -->
+<h3>URL DNA Features</h3>
+<p>URL Length : {{ features.length }}</p>
+<p>Dots Count : {{ features.dots }}</p>
+<p>Hyphen Count : {{ features.hyphen }}</p>
+<p>Contains IP : {{ features.has_ip }}</p>
+
+<hr>
+
+<!-- HTML Analysis -->
+<h3>HTML Analysis</h3>
+<p>Forms Found : {{ html_data.forms }}</p>
+<p>Input Fields : {{ html_data.inputs }}</p>
+<p>Links : {{ html_data.links }}</p>
+
+<hr>
+
+<!-- Suspicious Keywords -->
+<h3>Suspicious Keywords</h3>
+{% if features.keywords %}
+<ul>
+{% for word in features.keywords %}
+<li>{{ word }}</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No suspicious keywords found</p>
+{% endif %}
+
+<hr>
+
+<!-- Advanced URL Analysis (AI Bodyguard) -->
+<h3>Advanced URL Analysis (AI Bodyguard)</h3>
+<ul>
+<li>Length: {{ analysis['length'] }}</li>
+<li>Dots: {{ analysis['dots'] }}</li>
+<li>Hyphens: {{ analysis['hyphens'] }}</li>
+<li>Contains IP: {{ analysis['has_ip'] }}</li>
+<li>Suspicious Keywords: {{ analysis['keywords']|join(', ') }}</li>
+</ul>
+
+<hr>
+
+<!-- AI Phishing Trap -->
+<h3>AI Phishing Trap Analysis</h3>
+<p>Trap Score : {{ trap.trap_score }}</p>
+{% if trap.triggers %}
+<ul>
+{% for t in trap.triggers %}
+<li>{{ t }}</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No trap triggers detected</p>
+{% endif %}
+
+{% endblock %}

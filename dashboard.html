@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+<h2>📊 Security Dashboard</h2>
+
+<div class="row mt-4">
+
+<div class="col-md-4">
+<div class="card bg-primary text-white p-3">
+<h4>Total Scans</h4>
+<h2>{{total}}</h2>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card bg-danger text-white p-3">
+<h4>Phishing Detected</h4>
+<h2>{{phishing}}</h2>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card bg-success text-white p-3">
+<h4>Legitimate</h4>
+<h2>{{legit}}</h2>
+</div>
+</div>
+
+</div>
+
+</div>
+<!-- CHARTE -->
+
+<div class="row mt-5">
+<div class="col-md-6">
+
+<h4>Phishing vs Legitimate</h4>
+
+<div style="width:280px;">
+<canvas id="phishChart"></canvas>
+</div>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+var phishing = {{ phishing }};
+var legit = {{ legit }};
+
+var ctx = document.getElementById('phishChart').getContext('2d');
+
+var chart = new Chart(ctx, {
+type: 'doughnut',
+data: {
+labels: ['Phishing', 'Legitimate'],
+datasets: [{
+data: [phishing, legit],
+backgroundColor: ['red','green']
+}]
+},
+options: {
+responsive: true
+}
+});
+
+</script>
+
+{% endblock %}

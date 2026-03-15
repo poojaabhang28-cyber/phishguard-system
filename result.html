@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Prediction Result</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:50px;
+}
+
+h1, h2{
+    margin-bottom:20px;
+}
+
+p{
+    font-size:18px;
+    margin:10px 0;
+}
+
+a{
+    display:inline-block;
+    margin-top:30px;
+    padding:10px 20px;
+    background:#22c55e;
+    color:white;
+    text-decoration:none;
+    border-radius:6px;
+}
+
+a:hover{
+    background:#16a34a;
+}
+</style>
+
+</head>
+<body>
+
+<h1>AI Prediction Result</h1>
+
+<h2>Scanned URL:</h2>
+<p>{{ url }}</p>
+
+<h2>Prediction:</h2>
+<p>{{ result }}</p>
+
+<a href="/">Go Back</a>
+
+</body>
+</html>

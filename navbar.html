@@ -1,0 +1,14 @@
+<div class="navbar">
+    <a href="/">Home</a>
+
+    {% if 'user_id' in session %}
+        <a href="/logout">Logout</a>
+    {% else %}
+        <a href="/register">Register</a>
+        <a href="/login">Login</a>
+    {% endif %}
+
+    <a href="/about">About</a>
+    <a href="/threat-map">Threat Map</a>
+    <a href="/report">Report</a>
+</div>
